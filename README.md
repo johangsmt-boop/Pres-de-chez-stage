@@ -52,15 +52,3 @@ Pour l'intégrer au site, deux possibilités :
 ## Lancer le projet
 
 Aucune installation : ouvrir `pres de ches stage.html` dans un navigateur. Garder tous les fichiers dans le même dossier (même `logo.png`), sinon les styles et l'image ne se chargent pas.
-
-https://github.com/johangsmt-boop/Pres-de-chez-stage.git
-cd TON_REPO
-
-git pull
-
-git add .
-git commit -m
-git push
-
-git checkout -b ajout-chatbot
-git push -u origin ajout-chatbot
