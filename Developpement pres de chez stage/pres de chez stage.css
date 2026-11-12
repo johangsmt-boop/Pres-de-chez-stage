@@ -1,0 +1,171 @@
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px;
+}
+
+
+.top-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  align-items: stretch;
+}
+
+.map-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.map-section iframe {
+  width: 100%;
+  flex: 1;           
+  min-height: 420px;
+  border-radius: 8px;
+}
+
+.directory-section {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  margin-top: 2rem;
+  margin-bottom: -2rem;
+  margin-left: 3rem;
+  min-width: 0;      
+}
+
+.table-wrapper {
+  overflow: auto;     
+  max-height: 520px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+th, td {
+  padding: 8px 10px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+th {
+  background: #f3f3f3;
+  position: sticky;   /* l'en-tête reste visible au scroll */
+  top: 0;
+}
+
+/* ---- Formulaire pleine largeur en bas ---- */
+.form-section {
+  width: 100%;
+  padding: 24px;
+  background: #f8f8f8;
+  border-radius: 8px;
+}
+
+.form-section form {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2 colonnes */
+  gap: 16px;
+}
+
+.form-section .full {
+  grid-column: 1 / -1;            /* occupe toute la largeur */
+}
+
+.form-section label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.form-section input,
+.form-section select,
+.form-section textarea {
+  width: 100%;
+  padding: 8px;
+  font-family: inherit;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-section button {
+  padding: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+img {
+    max-width: 10%;
+}
+
+nav {
+    display: flex;
+    font-family: "Montserrat", sans-serif;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f6f0;
+    padding: 1rem;
+}
+nav a {
+    color: #A0C6A9; 
+    text-decoration: none;
+}
+
+nav a:visited {
+    color: #A0C6A9; 
+}
+
+ul {
+    list-style-type: none;
+    display: flex;
+    gap: 3rem;
+    margin-right: 2rem;
+}
+
+li {
+    font-size: 1.2rem;
+}
+
+iframe {
+    width: 50%;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+    margin-left: 2rem;
+    margin-top: 2rem;
+    display: block;
+    height: 500px;
+    border: none;
+}
+
+footer {
+    background-color: #f8f6f0;
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+
+
+
+/* ---- Mobile / petit écran : tout s'empile ---- */
+@media (max-width: 900px) {
+  .top-row,
+  .form-section form {
+    grid-template-columns: 1fr;
+  }
+}

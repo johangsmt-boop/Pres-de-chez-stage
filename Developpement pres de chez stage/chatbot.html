@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Mon site</title>
+<style>
+  #chat-btn {
+    position: fixed; bottom: 20px; right: 20px;
+    width: 56px; height: 56px; border-radius: 50%;
+    border: none; background: #2563eb; color: #fff;
+    font-size: 24px; cursor: pointer;
+  }
+  #chat-box {
+    position: fixed; bottom: 90px; right: 20px;
+    width: 300px; height: 380px;
+    background: #fff; border: 1px solid #ddd; border-radius: 12px;
+    display: none; flex-direction: column; overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,.15);
+  }
+  #chat-box.open { display: flex; }
+  #chat-header { background: #2563eb; color: #fff; padding: 12px; }
+  #chat-messages { flex: 1; padding: 10px; overflow-y: auto; }
+  .msg { margin: 6px 0; padding: 8px 10px; border-radius: 10px; max-width: 80%; }
+  .bot  { background: #f1f1f1; }
+  .user { background: #2563eb; color: #fff; margin-left: auto; }
+  #chat-form { display: flex; border-top: 1px solid #ddd; }
+  #chat-input { flex: 1; border: none; padding: 10px; outline: none; }
+  #chat-form button { border: none; background: #2563eb; color: #fff; padding: 0 14px; cursor: pointer; }
+</style>
+</head>
+<body>
+
+<h1>Bienvenue sur mon site</h1>
+
+<button id="chat-btn">💬</button>
+
+<div id="chat-box">
+  <div id="chat-header">Assistant</div>
+  <div id="chat-messages"></div>
+  <form id="chat-form">
+    <input id="chat-input" placeholder="Ta question..." autocomplete="off">
+    <button>Envoyer</button>
+  </form>
+</div>
+
+<script>
+  const btn = document.getElementById('chat-btn');
+  const box = document.getElementById('chat-box');
+  const form = document.getElementById('chat-form');
+  const input = document.getElementById('chat-input');
+  const messages = document.getElementById('chat-messages');
+
+  btn.addEventListener('click', () => box.classList.toggle('open'));
+
+  function addMessage(text, who) {
+    const div = document.createElement('div');
+    div.className = 'msg ' + who;
+    div.textContent = text;
+    messages.appendChild(div);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  function reply(text) {
+    const t = text.toLowerCase();
+    if (t.includes('bonjour') || t.includes('salut')) return 'Salut ! Comment je peux t’aider ?';
+    if (t.includes('contact')) return 'Tu peux nous écrire via la page Contact.';
+    if (t.includes('prix') || t.includes('tarif')) return 'Nos tarifs sont sur la page Tarifs.';
+    return 'Je n’ai pas compris, peux-tu reformuler ?';
+  }
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const text = input.value.trim();
+    if (!text) return;
+    addMessage(text, 'user');
+    input.value = '';
+    setTimeout(() => addMessage(reply(text), 'bot'), 400);
+  });
+
+  addMessage('Bonjour ! Pose-moi ta question.', 'bot');
+</script>
+
+</body>
+</html>
