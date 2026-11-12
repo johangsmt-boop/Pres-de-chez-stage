@@ -52,3 +52,15 @@ Pour l'intégrer au site, deux possibilités :
 ## Lancer le projet
 
 Aucune installation : ouvrir `pres de ches stage.html` dans un navigateur. Garder tous les fichiers dans le même dossier (même `logo.png`), sinon les styles et l'image ne se chargent pas.
+
+git clone https://github.com/TON_PSEUDO/TON_REPO.git
+cd TON_REPO
+
+git pull
+
+git add .
+git commit -m
+git push
+
+git checkout -b ajout-chatbot
+git push -u origin ajout-chatbot
